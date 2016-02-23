@@ -36,9 +36,9 @@
 -A HEAD -i eth0 -p udp -m udp --dport 53 -m dns --ad -j LOG
 -A HEAD -i eth0 -p udp -m udp --dport 53 -m dns --cd -j LOG
 
--A DDOS-RANDUM -p udp -m udp --dport 53 -m string --hex-string "|03777777053636366e6103636f6d|" --algo bm --from 41 --to 65535 -m comment --comment "DROP www.666na.com RANDUM" -j DROP-A
--A DDOS-AMP -p udp -m udp --dport 53 -m string --hex-string "|08616d706c6973747303636f6d|" --algo bm --to 65535 -m comment --comment "DROP amplists.com AMP-A" -j DROP-A
--A DDOS-AMP -p udp -m udp --dport 53 -m string --hex-string "|08616d706c6973747303636f6d|" --algo bm --to 65535 -m comment --comment "DROP amplists.com AMP-ANY" -j DROP-ANY
+-A DDOS-RANDUM -p udp -m udp --dport 53 -m string --from 41 --to 65535 --hex-string "|03777777053636366e6103636f6d|" --algo bm -m comment --comment "DROP www.666na.com RANDUM" -j DROP-A
+-A DDOS-AMP -p udp -m udp --dport 53 -m string --from 41 --to 65535 --hex-string "|08616d706c6973747303636f6d|" --algo bm -m comment --comment "DROP amplists.com AMP-A" -j DROP-A
+-A DDOS-AMP -p udp -m udp --dport 53 -m string --from 41 --to 65535 --hex-string "|08616d706c6973747303636f6d|" --algo bm -m comment --comment "DROP amplists.com AMP-ANY" -j DROP-ANY
 -A DDOS-BLOCK -s 192.168.0.1/32 -m comment --comment "BLOCK IP" -j DROP
 
 -A CVE-2015-7547 -p udp -m udp --sport 53 -m string --from 41 --hex-string "|0000010001|" --algo bm -m length --length 2048: -j DROP -m comment --comment 'CVE-2015-7547-UDP-A-Block'
