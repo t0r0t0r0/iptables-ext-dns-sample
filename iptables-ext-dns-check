@@ -1,0 +1,12 @@
+OK
+--------------------------------------------
+-A HEAD -i eth0 -p udp -m udp --dport 53 -m dns --rmatch --qname example.jp --rd -j LOG
+-A HEAD -i eth0 -p udp -m udp --dport 53 -m dns --rmatch --qname example.jp --qtype A -j LOG
+-A HEAD -i eth0 -p udp -m udp --dport 53 -m dns --rmatch --qname example.jp --rd --qtype A -j LOG
+
+NG
+--------------------------------------------
+-A HEAD -i eth0 -p udp -m udp --dport 53 -m dns --rmatch --qname example.jp ! --maxsize 12 --rd --qtype A -j LOG
+
+組み合わせチェック
+やっぱりmaxsizeとqtypeの組み合わせNG
