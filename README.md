@@ -6,6 +6,7 @@ IPTABLES
 iptables-ext-dns.example
 
 Usage:
+
 /bin/bash iptables-ext-dns.example
 
 
