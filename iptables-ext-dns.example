@@ -1,19 +1,19 @@
--A INPUT -p udp -m udp --dport 53 -m dns --qtype SOA -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --qtype ANY -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --qtype A -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --qtype AAAA -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --qtype CNAME -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --qtype MX -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --qtype NS -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --qtype SOA -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --qtype ANY -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --qtype A -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --qtype AAAA -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --qtype CNAME -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --qtype MX -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --qtype NS -j LOG
 
--A INPUT -p udp -m udp --dport 53 -m dns --rmatch --qname example.net -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --rmatch --qname example.jp --qtype A -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --rmatch --qname example.jp --qtype ANY -j DROP
--A INPUT -p udp -m udp --dport 53 -m dns --rmatch --qname example.org ! --maxsize 24 --qtype A -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --rmatch --qname example.net -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --rmatch --qname example.jp --qtype A -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --rmatch --qname example.jp --qtype ANY -j DROP
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --rmatch --qname example.org ! --maxsize 24 --qtype A -j LOG
 
--A INPUT -p udp -m udp --dport 53 -m dns --aa -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --tc -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --rd -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --ra -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --ad -j LOG
--A INPUT -p udp -m udp --dport 53 -m dns --cd -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --aa -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --tc -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --rd -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --ra -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --ad -j LOG
+iptables -A INPUT -p udp -m udp --dport 53 -m dns --cd -j LOG
