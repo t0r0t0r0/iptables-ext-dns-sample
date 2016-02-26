@@ -17,3 +17,15 @@
 -A INPUT -p udp -m udp --dport 53 -m dns --ra -j LOG
 -A INPUT -p udp -m udp --dport 53 -m dns --ad -j LOG
 -A INPUT -p udp -m udp --dport 53 -m dns --cd -j LOG
+
+#!/bin/bash
+######################################################
+DNSSERVER=$1
+dig A example.net @${DNSSERVER} +time=1
+dig A example.jp @${DNSSERVER} +time=1
+dig ANY example.jp @${DNSSERVER} +time=1
+dig A no12345678901234567890.example.org @${DNSSERVER} +time=1
+dig A example.co.jp +tcp @${DNSSERVER} +time=1
+dig A example.ad.jp +norec @${DNSSERVER} +time=1
+dig A example.or.jp +rec @${DNSSERVER} +time=1
+
